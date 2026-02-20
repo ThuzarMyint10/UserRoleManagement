@@ -1,4 +1,4 @@
-FROM php:8.2-fpm
+FROM php:8.2-cli
 
 RUN apt-get update && apt-get install -y \
     git curl zip unzip libpng-dev libonig-dev libxml2-dev libzip-dev \
@@ -16,3 +16,6 @@ WORKDIR /var/www
 COPY ./user_role_management_system /var/www
 
 RUN composer install --no-dev --optimize-autoloader
+
+EXPOSE 80
+CMD php artisan serve --host=0.0.0.0 --port=80
