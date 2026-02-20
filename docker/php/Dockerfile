@@ -12,9 +12,7 @@ RUN apt-get update && apt-get install -y \
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
 WORKDIR /var/www
-COPY ./user_role_management_system/. . 
-COPY .env.prod /var/www/.env
-
+COPY ./user_role_management_system/. .  
 
 RUN composer install --no-dev --optimize-autoloader
 
