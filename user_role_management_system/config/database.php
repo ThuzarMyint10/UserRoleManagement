@@ -166,7 +166,7 @@ return [
         ],
 
         'cache' => [
-            'url' => env('REDIS_URL'),
+            'url' => env('REDIS_URL', 'redis://default:qQVWSBPCOnWDRvazMUuJdeQwmwxHFwfK@redis.railway.internal:6379'),
             'host' => env('REDIS_HOST', '127.0.0.1'),
             'username' => env('REDIS_USERNAME', 'default'),
             'password' => env('REDIS_PASSWORD', 'qQVWSBPCOnWDRvazMUuJdeQwmwxHFwfK'),
