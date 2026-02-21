@@ -153,10 +153,10 @@ return [
         ],
 
         'default' => [
-            'url' => env('REDIS_URL'),
-            'host' => env('REDIS_HOST', '127.0.0.1'),
-            'username' => env('REDIS_USERNAME'),
-            'password' => env('REDIS_PASSWORD'),
+            'url' => env('REDIS_URL', 'redis://default:qQVWSBPCOnWDRvazMUuJdeQwmwxHFwfK@redis.railway.internal:6379'),
+            'host' => env('REDIS_HOST', 'redis.railway.internal'),
+            'username' => env('REDIS_USERNAME', 'default'),
+            'password' => env('REDIS_PASSWORD', 'qQVWSBPCOnWDRvazMUuJdeQwmwxHFwfK'),
             'port' => env('REDIS_PORT', '6379'),
             'database' => env('REDIS_DB', '0'),
             'max_retries' => env('REDIS_MAX_RETRIES', 3),
