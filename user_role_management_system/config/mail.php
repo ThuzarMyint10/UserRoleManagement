@@ -39,12 +39,12 @@ return [
 
         'smtp' => [
             'transport' => 'smtp',
-            'scheme' => env('MAIL_SCHEME'),
+            'scheme' => env('MAIL_SCHEME', 'smtp'),
             'url' => env('MAIL_URL'),
             'host' => env('MAIL_HOST', 'smtp.gmail.com'),
             'port' => env('MAIL_PORT', 587),
-            'username' => env('MAIL_USERNAME', 'kay23521@gmail.com'),
-            'password' => env('MAIL_PASSWORD', 'lqqtnnngzdyawyph'),
+            'username' => env('MAIL_USERNAME', 'kitkit206202@gmail.com'),
+            'password' => env('MAIL_PASSWORD', 'cbekhhsgfsukqmai'),
             'timeout' => null,
             'local_domain' => env('MAIL_EHLO_DOMAIN', parse_url((string) env('APP_URL', 'http://localhost'), PHP_URL_HOST)),
         ],
