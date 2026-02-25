@@ -1,10 +1,18 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
+use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Mail;
 
 Route::prefix('v1')->group(function () {
+    Route::get('/test-mail', function () {
+    Mail::raw('Test email from Railway', function ($message) {
+        $message->to('thuzarmyint795@gmail.com')->subject('Test');
+    });
+    return 'Mail sent!';
+});
+
     // Auth routes
     Route::apiResource('auth', AuthController::class)->only('store');
     Route::post('auth/login', [AuthController::class, 'login']);
