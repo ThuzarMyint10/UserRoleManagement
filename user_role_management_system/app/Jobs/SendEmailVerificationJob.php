@@ -7,8 +7,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
-use Illuminate\Queue\SerializesModels;
-use Illuminate\Support\Facades\Mail;
+use Illuminate\Queue\SerializesModels; 
 
 class SendEmailVerificationJob implements ShouldQueue
 {
@@ -28,10 +27,7 @@ class SendEmailVerificationJob implements ShouldQueue
      * Execute the job.
      */
     public function handle(): void
-    {
-        Mail::raw('Test email from Railway', function ($message) {
-            $message->to('thuzarmyint795@gmail.com')->subject('Test');
-        });
-        //  $this->user->sendEmailVerificationNotification();
+    { 
+         $this->user->sendEmailVerificationNotification();
     }
 }
