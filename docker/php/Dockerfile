@@ -18,5 +18,5 @@ RUN rm -f .env || true
 RUN composer install --no-dev --optimize-autoloader
 
 EXPOSE 80
-CMD php artisan migrate --force && php artisan serve --host=0.0.0.0 --port=80
+CMD php artisan optimize:clear && php artisan migrate --force && php artisan serve --host=0.0.0.0 --port=80
 
