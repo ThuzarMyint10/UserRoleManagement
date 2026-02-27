@@ -49,6 +49,13 @@ return [
             'local_domain' => env('MAIL_EHLO_DOMAIN', parse_url((string) env('APP_URL', 'http://localhost'), PHP_URL_HOST)),
         ],
 
+        'mailgun' => [
+            'transport' => 'mailgun',
+            'domain' => env('MAILGUN_DOMAIN', 'sandboxcb3d10bbdcda41c99c42b04e47ea1126.mailgun.org'),
+            'secret' => env('MAILGUN_SECRET', 'ef65cf19347fae45c1ab45b2d31a9431-58d4d6a2-21e19ce1'),
+            'endpoint' => env('MAILGUN_ENDPOINT', 'api.mailgun.net'),
+        ],
+
         'ses' => [
             'transport' => 'ses',
         ],
