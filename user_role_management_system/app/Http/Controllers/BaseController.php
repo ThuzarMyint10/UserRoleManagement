@@ -59,11 +59,11 @@ class BaseController extends Controller
 
         /*
         |--------------------------------------------------------------------------
-        | Metadata Cache
+        | Metadata Cache tags([$tag])
+            ->
         |--------------------------------------------------------------------------
         */
-        $meta = Cache::tags([$tag])
-            ->remember($metaKey, 3600, function () use ($modelClass) {
+        $meta = Cache::remember($metaKey, 3600, function () use ($modelClass) {
                 $latestUpdate = $modelClass::max('updated_at');
 
                 return [
@@ -93,11 +93,11 @@ class BaseController extends Controller
 
         /*
         |--------------------------------------------------------------------------
-        | Data Cache
+        | Data Cache tags([$tag])
+            ->
         |--------------------------------------------------------------------------
         */
-        $collection = Cache::tags([$tag])
-            ->remember($baseKey, 3600, function () use ($validIncludes) {
+        $collection = Cache::remember($baseKey, 3600, function () use ($validIncludes) {
 
                 Log::info("DB Hit!");
                 $data = $this->service->all();
