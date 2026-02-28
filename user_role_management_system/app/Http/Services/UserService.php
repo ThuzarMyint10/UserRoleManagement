@@ -12,4 +12,9 @@ class UserService extends BaseService
     }
 
     // Add user-specific business logic if needed
+    public function model()
+    {
+        return \App\Models\User::class;
+    }
+    
 }
