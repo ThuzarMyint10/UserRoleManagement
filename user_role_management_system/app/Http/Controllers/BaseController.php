@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
  
+use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Str;
 
 class BaseController extends Controller
 {
@@ -59,11 +59,11 @@ class BaseController extends Controller
 
         /*
         |--------------------------------------------------------------------------
-        | Metadata Cache tags([$tag])
-            ->
+        | Metadata Cache
         |--------------------------------------------------------------------------
         */
-        $meta = Cache::remember($metaKey, 3600, function () use ($modelClass) {
+        $meta = Cache::tags([$tag])
+            ->remember($metaKey, 3600, function () use ($modelClass) {
                 $latestUpdate = $modelClass::max('updated_at');
 
                 return [
@@ -93,11 +93,11 @@ class BaseController extends Controller
 
         /*
         |--------------------------------------------------------------------------
-        | Data Cache tags([$tag])
-            ->
+        | Data Cache
         |--------------------------------------------------------------------------
         */
-        $collection = Cache::remember($baseKey, 3600, function () use ($validIncludes) {
+        $collection = Cache::tags([$tag])
+            ->remember($baseKey, 3600, function () use ($validIncludes) {
 
                 Log::info("DB Hit!");
                 $data = $this->service->all();
