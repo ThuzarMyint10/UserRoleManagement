@@ -9,6 +9,8 @@ use App\Http\Contracts\UserInterface;
 use App\Http\Repositories\BaseRepository;
 use App\Http\Repositories\UserRepository;
 use App\Http\Services\AuthService;
+use Illuminate\Cache\RateLimiting\Limit;
+use Illuminate\Support\Facades\RateLimiter;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -27,6 +29,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        RateLimiter::for('api', function ($request) {
+            return Limit::perMinute(60)->by($request->user()?->id ?: $request->ip());
+        });
     }
 }

@@ -4,7 +4,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
-Route::prefix('v1')->group(function () {
+Route::middleware('throttle:api')->prefix('v1')->group(function () {
     // Auth routes
     Route::apiResource('auth', AuthController::class)->only('store');
     Route::post('auth/login', [AuthController::class, 'login']);
